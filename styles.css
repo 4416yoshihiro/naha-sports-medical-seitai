@@ -248,91 +248,97 @@ img {
 .drawer__close span:nth-child(2) { top: 14px; transform: rotate(-34deg); }
 
 .hero {
+  position: relative;
   min-height: 100vh;
-  padding-top: 98px;
+  padding-top: 0;
 }
 
 .hero__stage {
   position: relative;
-  width: min(100%, 1600px);
-  aspect-ratio: 1366 / 780;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
+  padding: 120px clamp(24px, 7vw, 92px) 72px;
+  overflow: hidden;
 }
 
-.hero-card {
+.hero-bg {
   position: absolute;
+  inset: 0;
   margin: 0;
   overflow: hidden;
-  background: #eadfd4;
-  filter: saturate(.9);
+  background: #d9cfc4;
+  filter: saturate(.88);
   opacity: 0;
-  transform: scale(.96);
-  transition: opacity .6s ease, transform .8s var(--ease-out);
+  transform: scale(1.02);
+  transition: opacity 1s ease, transform 1.4s var(--ease-out);
 }
 
-.hero-card.is-ready {
+.hero-bg.is-ready {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1.04);
 }
 
-.hero-card img {
+.hero-bg::before,
+.hero-bg::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+}
+
+.hero-bg::before {
+  background: rgba(252, 250, 246, .58);
+}
+
+.hero-bg::after {
+  background:
+    linear-gradient(90deg, rgba(252, 250, 246, .94) 0%, rgba(252, 250, 246, .68) 42%, rgba(252, 250, 246, .34) 100%),
+    linear-gradient(0deg, rgba(252, 250, 246, .84) 0%, rgba(252, 250, 246, 0) 34%);
+}
+
+.hero-bg img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 42%;
   opacity: 0;
-  transition: opacity 1.7s ease;
+  transform: scale(1.04);
+  transition: opacity 1.2s ease, transform 4s ease;
 }
 
-.hero-card--one img:first-child {
-  object-position: 48% 50%;
+.hero-bg img:first-child {
+  object-position: 52% 30%;
 }
 
-.hero-card img.is-active {
+.hero-bg img.is-active {
   opacity: 1;
-}
-
-.hero-card--one {
-  top: 0;
-  left: -1%;
-  z-index: 2;
-  width: 35%;
-  aspect-ratio: 481 / 569;
-  border-radius: 46% 54% 50% 50% / 36% 44% 56% 64%;
-}
-
-.hero-card--two {
-  top: 20%;
-  left: 24%;
-  z-index: 1;
-  width: 41%;
-  aspect-ratio: 556 / 511;
-  clip-path: ellipse(48% 44% at 50% 50%);
-}
-
-.hero-card--three {
-  top: 0;
-  right: -5%;
-  z-index: 3;
-  width: 45%;
-  aspect-ratio: 615 / 630;
-  border-radius: 38% 62% 47% 53% / 42% 36% 64% 58%;
+  transform: scale(1);
 }
 
 .hero__copy {
-  position: absolute;
-  bottom: 7%;
-  left: 4%;
+  position: relative;
   z-index: 8;
+  max-width: 760px;
 }
 
 .hero__copy p {
   margin: 0;
-  font-size: clamp(26px, 3.2vw, 46px);
-  line-height: 1.76;
-  letter-spacing: .08em;
+  color: #604b39;
+  font-size: clamp(36px, 5.2vw, 68px);
+  line-height: 1.45;
+  letter-spacing: .04em;
+  text-shadow: 0 2px 22px rgba(252, 250, 246, .92);
+}
+
+.hero__copy p span {
+  display: block;
+  white-space: nowrap;
 }
 
 .scroll-cue {
@@ -831,42 +837,21 @@ img {
   .menu-button { display: block; }
 
   .hero__stage {
-    min-height: clamp(650px, 165vw, 760px);
-    aspect-ratio: auto;
-  }
-
-  .hero-card--one {
-    left: -5%;
-    width: 52%;
-  }
-
-  .hero-card--two {
-    top: 20%;
-    right: 4%;
-    left: auto;
-    width: 60%;
-  }
-
-  .hero-card--three {
-    top: 39%;
-    right: auto;
-    left: 6%;
-    width: 55%;
+    min-height: 100svh;
+    padding: 112px 28px 72px;
   }
 
   .hero__copy {
-    right: 28px;
-    bottom: 38px;
-    left: 28px;
+    max-width: 620px;
   }
 
   .hero__copy p {
-    font-size: clamp(24px, 7.4vw, 34px);
-    line-height: 1.55;
+    font-size: clamp(32px, 7vw, 54px);
+    line-height: 1.48;
   }
 
   .scroll-cue {
-    bottom: 0;
+    bottom: 18px;
   }
 
   .service-grid {
@@ -882,38 +867,33 @@ img {
     padding: 0 24px;
   }
 
-  .hero {
-    padding-top: 82px;
-  }
-
   .hero__stage {
-    min-height: 580px;
+    min-height: 100svh;
+    padding: 112px 24px 72px;
   }
 
-  .hero-card--one {
-    top: -8%;
-    left: -18%;
-    width: 78%;
+  .hero-bg::before {
+    background: rgba(252, 250, 246, .5);
   }
 
-  .hero-card--one img:first-child {
-    object-position: 50% 24%;
+  .hero-bg::after {
+    background:
+      linear-gradient(90deg, rgba(252, 250, 246, .92) 0%, rgba(252, 250, 246, .68) 56%, rgba(252, 250, 246, .42) 100%),
+      linear-gradient(0deg, rgba(252, 250, 246, .86) 0%, rgba(252, 250, 246, 0) 38%);
   }
 
-  .hero-card--two {
-    top: 9%;
-    right: -12%;
-    width: 74%;
+  .hero-bg img {
+    object-position: 54% 36%;
   }
 
-  .hero-card--three {
-    top: 30%;
-    left: -6%;
-    width: 68%;
+  .hero-bg img:first-child {
+    object-position: 55% 24%;
   }
 
-  .hero__copy {
-    bottom: 76px;
+  .hero__copy p {
+    font-size: clamp(28px, 8.2vw, 38px);
+    line-height: 1.58;
+    letter-spacing: .02em;
   }
 
   .logo__text {

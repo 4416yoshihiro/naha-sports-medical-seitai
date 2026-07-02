@@ -45,7 +45,7 @@ function startHeroSliders() {
       images[activeIndex].classList.remove("is-active");
       activeIndex = (activeIndex + 1) % images.length;
       images[activeIndex].classList.add("is-active");
-    }, 5600 + sliderIndex * 600);
+    }, 3000);
   });
 }
 
