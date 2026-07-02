@@ -412,6 +412,10 @@ img {
   letter-spacing: .11em;
 }
 
+.concept h1 span {
+  display: block;
+}
+
 .concept p,
 .journal > .section__inner > p,
 .access p {
@@ -883,11 +887,33 @@ img {
   }
 
   .hero__stage {
-    min-height: 700px;
+    min-height: 580px;
+  }
+
+  .hero-card--one {
+    top: -8%;
+    left: -18%;
+    width: 78%;
+  }
+
+  .hero-card--one img:first-child {
+    object-position: 50% 24%;
+  }
+
+  .hero-card--two {
+    top: 9%;
+    right: -12%;
+    width: 74%;
+  }
+
+  .hero-card--three {
+    top: 30%;
+    left: -6%;
+    width: 68%;
   }
 
   .hero__copy {
-    bottom: 46px;
+    bottom: 76px;
   }
 
   .logo__text {
@@ -898,6 +924,21 @@ img {
   .section {
     padding-right: 24px;
     padding-left: 24px;
+  }
+
+  .concept {
+    padding-top: 66px;
+  }
+
+  .concept h1 {
+    font-size: clamp(15px, 4vw, 16px);
+    line-height: 1.75;
+    letter-spacing: 0;
+  }
+
+  .concept h1 span {
+    display: block;
+    white-space: nowrap;
   }
 
   .concept p,
